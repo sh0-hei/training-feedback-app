@@ -1,8 +1,7 @@
-package com.example.training_feedback_app.ui.training_part
+package com.example.training_feedback_app.ui.component
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.training_feedback_app.ui.component.TrainingPartButton
 
 @Composable
 fun ArmPartButton(
