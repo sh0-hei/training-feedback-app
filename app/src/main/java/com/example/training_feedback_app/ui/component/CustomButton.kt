@@ -14,9 +14,9 @@ import androidx.compose.foundation.layout.Column
 @Composable
 fun StartWorkoutButton(
     modifier: Modifier = Modifier,
-    text: String = "START",
+    text: String = "開始",
     onClick: () -> Unit
-){
+) {
     Button(
         modifier = modifier,
         onClick = onClick,
@@ -25,7 +25,7 @@ fun StartWorkoutButton(
             contentColor = Color.White
         ),
         shape = RoundedCornerShape(12.dp)
-    ){
+    ) {
         Text(text)
     }
 }
@@ -34,9 +34,9 @@ fun StartWorkoutButton(
 @Composable
 fun FinishWorkoutButton(
     modifier: Modifier = Modifier,
-    text: String = "FINISH",
+    text: String = "終了",
     onClick: () -> Unit
-){
+) {
     Button(
         modifier = modifier,
         onClick = onClick,
@@ -45,7 +45,7 @@ fun FinishWorkoutButton(
             contentColor = Color.White
         ),
         shape = RoundedCornerShape(12.dp)
-    ){
+    ) {
         Text(text)
     }
 }
@@ -54,9 +54,9 @@ fun FinishWorkoutButton(
 @Composable
 fun AbortWorkoutButton(
     modifier: Modifier = Modifier,
-    text: String = "ABORT",
+    text: String = "中断",
     onClick: () -> Unit
-){
+) {
     Button(
         modifier = modifier,
         onClick = onClick,
@@ -65,7 +65,7 @@ fun AbortWorkoutButton(
             contentColor = Color.White
         ),
         shape = RoundedCornerShape(12.dp)
-    ){
+    ) {
         Text(text)
     }
 }
@@ -74,9 +74,9 @@ fun AbortWorkoutButton(
 @Composable
 fun RetryButton(
     modifier: Modifier = Modifier,
-    text: String = "RETRY",
+    text: String = "再試行",
     onClick: () -> Unit
-){
+) {
     Button(
         modifier = modifier,
         onClick = onClick,
@@ -85,7 +85,7 @@ fun RetryButton(
             contentColor = Color.White
         ),
         shape = RoundedCornerShape(12.dp)
-    ){
+    ) {
         Text(text)
     }
 }
@@ -96,7 +96,7 @@ fun ConfirmButton(
     modifier: Modifier = Modifier,
     text: String = "OK",
     onClick: () -> Unit
-){
+) {
     Button(
         modifier = modifier,
         onClick = onClick,
@@ -105,7 +105,7 @@ fun ConfirmButton(
             contentColor = Color.White
         ),
         shape = RoundedCornerShape(12.dp)
-    ){
+    ) {
         Text(text)
     }
 }
@@ -114,9 +114,9 @@ fun ConfirmButton(
 @Composable
 fun CancelButton(
     modifier: Modifier = Modifier,
-    text: String = "CANCEL",
+    text: String = "戻る",
     onClick: () -> Unit
-){
+) {
     Button(
         modifier = modifier,
         onClick = onClick,
@@ -125,15 +125,14 @@ fun CancelButton(
             contentColor = Color.Black
         ),
         shape = RoundedCornerShape(12.dp)
-    ){
+    ) {
         Text(text)
     }
 }
 
-/*
 @Preview(showBackground = true)
 @Composable
-fun PreviewAllButtons(){
+fun PreviewAllButtons() {
     Column {
         StartWorkoutButton(onClick = {})
         FinishWorkoutButton(onClick = {})
@@ -143,4 +142,3 @@ fun PreviewAllButtons(){
         CancelButton(onClick = {})
     }
 }
-*/
