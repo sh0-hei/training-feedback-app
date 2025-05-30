@@ -8,10 +8,10 @@ data class TrainingPart(
 
 // 部位一覧の定義（表示順）
 val trainingPartList = listOf(
-    TrainingPart(name = "腕 - Arm -", enabled = true),
-    TrainingPart(name = "肩 - Shoulder -", enabled = true),
-    TrainingPart(name = "胸 - Brest -", enabled = true),
-    TrainingPart(name = "腹 - Belly -", enabled = true),
-    TrainingPart(name = "背中 - Back -", enabled = true),
-    TrainingPart(name = "下半身 - Lower body -", enabled = true)
+    TrainingPart("腕", true),
+    TrainingPart("肩", true),
+    TrainingPart("胸", true),
+    TrainingPart("腹", true),
+    TrainingPart("背中", true),
+    TrainingPart("下半身", true)
 )
