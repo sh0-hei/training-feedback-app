@@ -28,7 +28,7 @@ fun HomeScreen(navController: NavController) {
             TrainingPartListSection(
                 onPartSelected = { selectedPart: String ->
                     // トレーニングメニュー画面に遷移
-                    navController.navigate("training_menu/${selectedPart}")
+                    navController.navigate("training_menu/$selectedPart")
                 }
             )
         }
