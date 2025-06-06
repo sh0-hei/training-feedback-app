@@ -17,14 +17,16 @@ import com.example.training_feedback_app.ui.component.StartWorkoutButton
 @Composable
 fun CaptureScreen(
     navController: NavController,
-    speechManager: SpeechManager
+    speechManager: SpeechManager,
+    partName: String,
+    menuName: String
 ) {
     var isRecording by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("フォーム撮影中") }
+                title = { Text("フォーム撮影中：$menuName") }
             )
         },
         bottomBar = {
@@ -71,5 +73,5 @@ private fun startWorkout(speechManager: SpeechManager) {
 
 // 終了処理（画面遷移）
 private fun finishWorkout(navController: NavController) {
-    navController.navigate("result_screen")
+    navController.navigate("result")
 }
