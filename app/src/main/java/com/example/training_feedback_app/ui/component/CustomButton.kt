@@ -7,9 +7,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.foundation.layout.Column
-
 // トレーニング開始ボタン
 @Composable
 fun StartWorkoutButton(
@@ -127,18 +124,5 @@ fun CancelButton(
         shape = RoundedCornerShape(12.dp)
     ) {
         Text(text)
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewAllButtons() {
-    Column {
-        StartWorkoutButton(onClick = {})
-        FinishWorkoutButton(onClick = {})
-        AbortWorkoutButton(onClick = {})
-        RetryButton(onClick = {})
-        ConfirmButton(onClick = {})
-        CancelButton(onClick = {})
     }
 }
