@@ -7,19 +7,21 @@ import androidx.compose.runtime.remember
 import androidx.navigation.compose.rememberNavController
 import com.example.training_feedback_app.speech.SpeechManager
 import com.example.training_feedback_app.ui.navigation.AppNavGraph
-// import com.example.training_feedback_app.ui.theme.TrainingFeedbackAppTheme
+import com.example.training_feedback_app.ui.theme.TrainingFeedbackAppTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val navController = rememberNavController()
-            val speechManager = remember { SpeechManager(this) }
+            TrainingFeedbackAppTheme {
+                val navController = rememberNavController()
+                val speechManager = remember { SpeechManager(this) }
 
-            AppNavGraph(
-                navController = navController,
-                speechManager = speechManager
-            )
+                AppNavGraph(
+                    navController = navController,
+                    speechManager = speechManager
+                )
+            }
         }
     }
 }
