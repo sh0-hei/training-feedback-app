@@ -1,5 +1,6 @@
 package com.example.training_feedback_app.ui.navigation
 
+import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -41,6 +42,7 @@ fun AppNavGraph(navController: NavHostController, speechManager: SpeechManager) 
             CaptureScreen(
                 navController = navController,
                 speechManager = speechManager,
+                // context = context,
                 partName = partName,
                 menuName = menuName
             )

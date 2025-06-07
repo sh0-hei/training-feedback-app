@@ -21,7 +21,7 @@
 - Kotlin
 - Android Studio
 - Jetpack / Jetpack Compose（UI構築）
-- MediaPipe / TensorFlow Lite（AI解析）
+- ML Kit<=MediaPipe / TensorFlow Lite（AI解析）
 - TextToSpeech（音声フィードバック）
 
 ---
