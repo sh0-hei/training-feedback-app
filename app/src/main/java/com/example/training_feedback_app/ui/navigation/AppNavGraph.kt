@@ -1,8 +1,6 @@
 package com.example.training_feedback_app.ui.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -14,7 +12,7 @@ import com.example.training_feedback_app.ui.screen.TrainingMenuScreen
 import com.example.training_feedback_app.ui.screen.CaptureScreen
 
 @Composable
-fun AppNavGraph(navController: NavHostController) {
+fun AppNavGraph(navController: NavHostController, speechManager: SpeechManager) {
     NavHost(
         navController = navController,
         startDestination = "home"
@@ -40,8 +38,6 @@ fun AppNavGraph(navController: NavHostController) {
         ) { backStackEntry ->
             val partName = backStackEntry.arguments?.getString("partName") ?: ""
             val menuName = backStackEntry.arguments?.getString("menuName") ?: ""
-            val context = LocalContext.current
-            val speechManager = remember { SpeechManager(context) }
             CaptureScreen(
                 navController = navController,
                 speechManager = speechManager,
