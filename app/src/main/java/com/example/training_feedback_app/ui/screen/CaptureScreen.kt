@@ -16,6 +16,11 @@ import com.example.training_feedback_app.speech.SpeechManager
 import com.example.training_feedback_app.ui.component.FinishWorkoutButton
 import com.example.training_feedback_app.ui.component.StartWorkoutButton
 
+import android.content.Context // Intentで必要なのでインポート
+import android.content.Intent // Intentをインポート
+import androidx.compose.ui.platform.LocalContext
+import com.example.training_feedback_app.TrainerActivity // 起動したいActivityをインポート
+
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.ParagraphStyle
@@ -40,6 +45,9 @@ fun CaptureScreen(
 ) {
     var isRecording by remember { mutableStateOf(false) }
 
+    // ★ Contextを取得
+    val context = LocalContext.current
+
     Scaffold(
         bottomBar = {
             Box(
@@ -52,7 +60,7 @@ fun CaptureScreen(
                     FinishWorkoutButton(onClick = { finishWorkout(navController) })
                 } else {
                     StartWorkoutButton(onClick = {
-                        startWorkout(speechManager)
+                        startWorkout(speechManager, context, partName, menuName)
                         isRecording = true
                     })
                 }
@@ -102,16 +110,29 @@ fun CaptureScreen(
 }
 
 // 開始処理（音声フィードバック＋カメラ起動＋10秒後のフィードバック）
-private fun startWorkout(speechManager: SpeechManager) {
+private fun startWorkout(
+    speechManager: SpeechManager,
+    context: Context,
+    partName: String,
+    menuName: String
+    ) {
+    // TODO: カメラ起動処理をここに記述する//
+    // 1. TrainerActivityを起動するためのIntentを作成
+    val intent = Intent(context, TrainerActivity::class.java).apply {
+        // 2. TrainerActivityに渡したい情報を添付する
+        putExtra("PART_NAME", partName)
+        putExtra("MENU_NAME", menuName)
+    }
+    // 3. Intentを使ってActivityを起動
+    context.startActivity(intent)
+
     // 音声フィードバックで開始を通知
     speechManager.speak("撮影を開始します。")
 
-    // TODO: カメラ起動処理をここに記述する
-
-    // 10秒後にフィードバックを読み上げる
+    // 15秒後にフィードバックを読み上げる
     Handler(Looper.getMainLooper()).postDelayed({
         speechManager.speak("腕の位置が下がっています。しっかりと引き付けましょう。")
-    }, 10_000)
+    }, 15_000)
 }
 
 // 終了処理（画面遷移）

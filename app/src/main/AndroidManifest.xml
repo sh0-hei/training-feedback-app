@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <!--
+         「このアプリはカメラ機能を“必要”とする」ことを Android システムに宣言しています。
+     	カメラのない端末には Google Play ストアで表示されなくなる（＝インストール不可）（上）
+    -->
+    <!-- required="false" にすることで「カメラなし端末でもOK」という意味になる。(下) -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" /> <!-- アプリがカメラを使うことをユーザーに許可してもらうために必要 -->
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -12,6 +21,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Trainingfeedbackapp"
         tools:targetApi="31">
+        <activity
+            android:name=".TrainerActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
