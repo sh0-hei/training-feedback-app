@@ -16,26 +16,17 @@ import com.example.training_feedback_app.speech.SpeechManager
 import com.example.training_feedback_app.ui.component.FinishWorkoutButton
 import com.example.training_feedback_app.ui.component.StartWorkoutButton
 
-import android.content.Context // Intentで必要なのでインポート
-import android.content.Intent // Intentをインポート
+import android.content.Context
+import android.content.Intent
 import androidx.compose.ui.platform.LocalContext
-import com.example.training_feedback_app.TrainerActivity // 起動したいActivityをインポート
+import com.example.training_feedback_app.TrainerActivity
 
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.ParagraphStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextIndent
 import androidx.compose.ui.unit.em
 
-val numberedInstructions = listOf(
-    "肩幅くらいに足を開いて立ち、両手にダンベルを持つ",
-    "このとき、手のひらは前方に向ける",
-    "肩をリラックスさせて背骨をまっすぐに伸ばす",
-    "ダンベルを持ったまま、ひじを固定して持ち上げる動作をおこなう",
-    "ひじが完全に曲がるまで持ち上げた後、ダンベルをゆっくりと元の位置に降ろす"
-)
-
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CaptureScreen(
     navController: NavController,
@@ -45,7 +36,6 @@ fun CaptureScreen(
 ) {
     var isRecording by remember { mutableStateOf(false) }
 
-    // ★ Contextを取得
     val context = LocalContext.current
 
     Scaffold(
@@ -53,7 +43,7 @@ fun CaptureScreen(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(bottom = 32.dp), // ナビゲーションバーとの重なりを防ぐ
+                    .padding(bottom = 32.dp),
                 contentAlignment = Alignment.Center
             ) {
                 if (isRecording) {
@@ -73,7 +63,6 @@ fun CaptureScreen(
                 .padding(innerPadding),
             contentAlignment = Alignment.Center
         ) {
-            // Text("カメラプレビューは未実装です")
             Image(
                 painter = painterResource(id = R.drawable.dumbbell_curl_reference),
                 contentDescription = "dumbbell_curl_reference.png",
@@ -83,7 +72,15 @@ fun CaptureScreen(
                     .size(300.dp),
                 alpha = 0.85f
             )
-            // Text応急処置
+
+            val numberedInstructions = listOf(
+                "肩幅くらいに足を開いて立ち、両手にダンベルを持つ",
+                "このとき、手のひらは前方に向ける",
+                "肩をリラックスさせて背骨をまっすぐに伸ばす",
+                "ダンベルを持ったまま、ひじを固定して持ち上げる動作をおこなう",
+                "ひじが完全に曲がるまで持ち上げた後、ダンベルをゆっくりと元の位置に降ろす"
+            )
+
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -109,25 +106,21 @@ fun CaptureScreen(
     }
 }
 
-// 開始処理（音声フィードバック＋カメラ起動＋10秒後のフィードバック）
 private fun startWorkout(
     speechManager: SpeechManager,
     context: Context,
     partName: String,
     menuName: String
-    ) {
-    // TODO: カメラ起動処理をここに記述する//
-    // 1. TrainerActivityを起動するためのIntentを作成
+) {
+    // 音声フィードバックで開始を通知
+    speechManager.speak("撮影を開始します。")
+
+    // カメラ起動処理
     val intent = Intent(context, TrainerActivity::class.java).apply {
-        // 2. TrainerActivityに渡したい情報を添付する
         putExtra("PART_NAME", partName)
         putExtra("MENU_NAME", menuName)
     }
-    // 3. Intentを使ってActivityを起動
     context.startActivity(intent)
-
-    // 音声フィードバックで開始を通知
-    speechManager.speak("撮影を開始します。")
 
     // 15秒後にフィードバックを読み上げる
     Handler(Looper.getMainLooper()).postDelayed({
@@ -135,7 +128,6 @@ private fun startWorkout(
     }, 15_000)
 }
 
-// 終了処理（画面遷移）
 private fun finishWorkout(navController: NavController) {
     navController.navigate("result")
 }
