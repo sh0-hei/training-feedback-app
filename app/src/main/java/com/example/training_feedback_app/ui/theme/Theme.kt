@@ -7,10 +7,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
-private val VibrantOrange = Color(0xFFFF7043)
-private val SoftCoral = Color(0xFFFF8A65)
-private val BackgroundCream = Color(0xFFFFF9E5)
-
 private val DarkColorScheme = darkColorScheme(
     // primary = Purple80,
     // secondary = PurpleGrey80,
@@ -37,7 +33,7 @@ private val LightColorScheme = lightColorScheme(
     onSecondary = Color.White,
     tertiary = Color(0xFFFFAB91), // 薄オレンジ系
     onTertiary = Color.White,
-    background = BackgroundCream,
+    background = IvoryTint,
     surface = Color.White,
     onBackground = Color(0xFF1C1B1F),
     onSurface = Color(0xFF1C1B1F)

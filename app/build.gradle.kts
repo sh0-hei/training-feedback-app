@@ -50,8 +50,9 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation("androidx.navigation:navigation-compose:2.7.5")
-    //追加分
-    //Viewシステム用のライブラリ
+
+    // 追加分
+    // Viewシステム用のライブラリ
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.constraintlayout)
 
@@ -63,8 +64,13 @@ dependencies {
 
     // ML Kit Pose Detectionライブラリ
     implementation(libs.mlkit.pose.detection)
+
     implementation(libs.material)
     implementation(libs.androidx.activity)
+
+    // Compose 明示的バージョン指定（必要な場合）
+    implementation("androidx.compose.ui:ui:1.4.3")
+    implementation("androidx.compose.material3:material3:1.1.1")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

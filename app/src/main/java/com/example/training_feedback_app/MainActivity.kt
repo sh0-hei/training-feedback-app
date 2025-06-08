@@ -13,7 +13,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            TrainingFeedbackAppTheme {
+            TrainingFeedbackAppTheme(
+                dynamicColor = false
+            ) {
                 val navController = rememberNavController()
                 val speechManager = remember { SpeechManager(this) }
 

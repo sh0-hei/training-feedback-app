@@ -8,6 +8,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.training_feedback_app.ui.component.TrainingMenuListSection
 
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Menu
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TrainingMenuScreen(
@@ -17,7 +20,15 @@ fun TrainingMenuScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("トレーニングメニュー（$partName）を選択") }
+                title = { Text("トレーニングメニューを選択") },
+                actions = {
+                    IconButton(onClick = { /* TODO: メニュー開閉処理 */ }) {
+                        Icon(
+                            imageVector = Icons.Default.Menu,
+                            contentDescription = "メニュー"
+                        )
+                    }
+                }
             )
         }
     ) { innerPadding ->
