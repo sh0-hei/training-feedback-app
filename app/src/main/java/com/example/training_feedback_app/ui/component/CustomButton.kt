@@ -11,7 +11,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun StartWorkoutButton(
     modifier: Modifier = Modifier,
-    text: String = "開始",
+    text: String = "撮影開始",
     onClick: () -> Unit
 ) {
     Button(
